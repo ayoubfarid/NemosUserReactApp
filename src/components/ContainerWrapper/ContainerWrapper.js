@@ -1,12 +1,11 @@
 
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import  PageHeader   from "./../PageHeader/PageHeader";
 
-export default function ContentWrapper() {
+export default function ContentWrapper({children}) {
   return (
-    <Box border="none"  display='flex' width='50%' alignContent='center' flexDirection='column' justifyContent='center' component="section"  sx={{ p: 2, border: '1px dashed grey' }}>
-      <PageHeader/>
+    <Box   display='flex' width='50%' alignContent='center' flexDirection='column' justifyContent='center' height="85%"  >
+      {children}
     </Box>
   );
 }
