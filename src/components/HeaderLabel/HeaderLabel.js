@@ -1,4 +1,4 @@
-import AppColor from "../../utils/Utils";
+import {AppColor} from "../../utils/Utils";
 
 export default function HeaderLabel(){
     let colorPrimary=AppColor.primary;

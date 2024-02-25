@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import AppColor from "../../utils/Utils";
+import {AppColor} from "../../utils/Utils";
 
 export function PrimaryButton(props) {
     let colorPrimary=AppColor.primary;

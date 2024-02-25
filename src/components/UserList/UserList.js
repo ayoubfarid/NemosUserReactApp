@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {fetchUser} from './../../services/user/usersRequest';
 import UsersNotFound from "../UsersNotFound/UsersNotFound";
 import UsersIsLoading from "../UsersIsLoading/UsersIsLoading";
+import UserRow from "../UserRow/UserRow";
 
 
  const  UserList = () => {
@@ -25,7 +26,7 @@ import UsersIsLoading from "../UsersIsLoading/UsersIsLoading";
         return isLoading ?
         <UsersIsLoading/>
         : users.length > 0 ?
-          users.map((user,index)=> <h2 key={user.id}  > user.name </h2>) : 
+          users.map((user,index)=> <UserRow key={index} props={user} />) : 
           <UsersNotFound/>
           
 

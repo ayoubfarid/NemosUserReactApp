@@ -1,40 +1,50 @@
-  export const fetchUser =new Promise((resolve, reject) =>{
-    let data=[]
-    try{
-     if( localStorage.getItem('users') == null){
-        localStorage.setItem('users','[]');
-         data=[];
-    } 
-    else{
-    let dataUser=localStorage.getItem('users');
-    if(dataUser !=='') {
-        data=JSON.parse(dataUser);
-    }
-    console.log('users rec ',data)
-    }
-    resolve(data);   
+export const fetchUser = new Promise((resolve, reject) => {
+    setTimeout(() => { 
+        try {
+            let data = localStorage.getItem('users');
+            if (!data) {
+                localStorage.setItem('users', JSON.stringify([]));
+                data = '[]';
+            }
+            resolve(JSON.parse(data));
+        } catch (e) {
+            reject(e);
+        }
+    }, 500);
+});
+
+export function addUser(user) {
+    fetchUser.then(usersFound => {
         
-    }catch(e){
-        reject(e);
-    }
+        let users = [...usersFound];
+        user.id=users.length + 1;
+        users.push(user);
+        setUsers(users);
+    }).catch(err => {
+        console.error('Error adding user:', err);
+    });
 }
-    );
 
-
- export function addUser(user){
-    let users = fetchUser();
-    users.add(user);
-    setUsers(users);
-};
-export function setUsers(users){
-    const dataStringify=JSON.stringify(users);
-    localStorage.setItem('users',dataStringify);
+export function setUsers(users) {
+    const dataStringify = JSON.stringify(users);
+    localStorage.setItem('users', dataStringify);
 }
-export function removeUser(idUser){
-    let id=idUser;
-    let users = fetchUser();
-    const newUserArray = users.filter(user => {
-        return user.id !== id;
-      });
-      setUsers(newUserArray);
+export function changeStatusUser(id,status){
+    fetchUser.then(users => {
+        const indexUser = users.findIndex(user => user.id === id);
+        users.at(indexUser).status=status;
+        console.log('users',users)
+        setUsers(users);
+    }).catch(err => {
+        console.error('Error removing user:', err);
+    });
+}
+
+export function removeUser(idUser) {
+    fetchUser.then(users => {
+        const newUserArray = users.filter(user => user.id !== idUser);
+        setUsers(newUserArray);
+    }).catch(err => {
+        console.error('Error removing user:', err);
+    });
 }
