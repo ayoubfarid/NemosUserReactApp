@@ -1,7 +1,7 @@
 import "./App.css";
-import ContentWrapper from "./components/ContainerWrapper/ContainerWrapper.js";
-import PageHeader from "./components/PageHeader/PageHeader.js";
-import PageContainer from "./components/PageContainer/PageContainer.js";
+import ContentWrapper from "./components/ContainerWrapper/ContainerWrapper";
+import PageHeader from "./components/PageHeader/PageHeader";
+import PageContainer from "./components/PageContainer/PageContainer";
 
 import "@fontsource/poppins/100.css";
 import "@fontsource/poppins/200.css";
@@ -12,7 +12,7 @@ import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
 import "@fontsource/poppins/800.css";
 import "@fontsource/poppins/900.css";
-import UserListContainer from "./components/UserListContainer/UserListContainer.js";
+import UserListContainer from "./components/UserListContainer/UserListContainer";
 
 
 function App() {
