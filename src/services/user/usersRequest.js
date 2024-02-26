@@ -10,7 +10,7 @@ export const fetchUser = new Promise((resolve, reject) => {
         } catch (e) {
             reject(e);
         }
-    }, 500);
+    }, 100);
 });
 
 export function addUser(user) {
